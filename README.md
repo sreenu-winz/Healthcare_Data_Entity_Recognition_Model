@@ -1,6 +1,6 @@
-Healthcare Data Entity Recognition Model
+# Healthcare Data Entity Recognition Model
 
-Problem Statement
+## Problem Statement
 
 In this project, we consider a hypothetical example of a health tech company called ‘BeHealthy’. The goal is to connect medical communities with millions of patients across the country through a web platform. This platform allows doctors to list their services, manage patient interactions, book appointments, track past medical records, and provide e-prescriptions.
 
@@ -8,66 +8,57 @@ Companies like ‘BeHealthy’ generate vast amounts of medical data daily. Our 
 
 Given a dataset containing medical text, our objective is to build a custom NER model to identify disease names and their probable treatments. The extracted information is then presented in a structured format, such as a dictionary or table.
 
-Approach
+## Approach
 
-1. Data Preprocessing
+### 1. Data Preprocessing
 
-Construct sentences from individual words in the train_sent and test_sent datasets.
+- Construct sentences from individual words in the train_sent and test_sent datasets.
+- Similarly, reconstruct label sequences in the train_label and test_label datasets.
+- Print example sentences and label counts to ensure proper data preprocessing.
 
-Similarly, reconstruct label sequences in the train_label and test_label datasets.
+### 2. Concept Identification
 
-Print example sentences and label counts to ensure proper data preprocessing.
+- Use Part-of-Speech (PoS) tagging to identify and extract tokens labeled as NOUN or PROPN.
+- Calculate the frequency of these tokens in the combined train and test datasets.
+- Print the top 25 most common tokens with NOUN or PROPN tags.
 
-2. Concept Identification
+### 3. Defining Features for CRF
 
-Use Part-of-Speech (PoS) tagging to identify and extract tokens labeled as NOUN or PROPN.
+- Define features for the CRF model, including PoS tags and preceding word information.
+- Mark the beginning and end of sentences with appropriate features.
 
-Calculate the frequency of these tokens in the combined train and test datasets.
+### 4. Getting Features and Labels of Sentences
 
-Print the top 25 most common tokens with NOUN or PROPN tags.
+- Write code to extract feature values for each sentence.
+- Write code to generate a list of labels for each sentence.
 
-3. Defining Features for CRF
+### 5. Defining Input and Target Variables
 
-Define features for the CRF model, including PoS tags and preceding word information.
+- Extract feature values for each sentence as input variables for the CRF model.
+- Extract labels as target variables for the CRF model.
 
-Mark the beginning and end of sentences with appropriate features.
+### 6. Building the Model
 
-4. Getting Features and Labels of Sentences
+- Build a Conditional Random Fields (CRF) model using the defined features and target variables.
 
-Write code to extract feature values for each sentence.
+### 7. Evaluating the Model
 
-Write code to generate a list of labels for each sentence.
+- Predict labels for each token in the test dataset using the CRF model.
+- Calculate the F1 score to evaluate the model's performance.
 
-5. Defining Input and Target Variables
+### 8. Identifying Diseases and Predicted Treatments Using a Custom NER
 
-Extract feature values for each sentence as input variables for the CRF model.
+- Create a dictionary where diseases are keys and treatments are values.
+- Predict treatments for specific diseases, such as 'hereditary retinoblastoma'.
 
-Extract labels as target variables for the CRF model.
-
-6. Building the Model
-
-Build a Conditional Random Fields (CRF) model using the defined features and target variables.
-
-7. Evaluating the Model
-
-Predict labels for each token in the test dataset using the CRF model.
-
-Calculate the F1 score to evaluate the model's performance.
-
-8. Identifying Diseases and Predicted Treatments Using a Custom NER
-
-Create a dictionary where diseases are keys and treatments are values.
-
-Predict treatments for specific diseases, such as 'hereditary retinoblastoma'.
-
-Results
+## Results
 
 The model was evaluated using the F1 score, which measures the accuracy of the model in terms of precision and recall. Our CRF model achieved an impressive F1 score of 0.9059791628543951, indicating excellent performance in identifying and classifying entities in healthcare data.
 
-Conclusion
+## Conclusion
 
 By leveraging the CRF model, we effectively identified and classified entities within healthcare data. This approach can significantly aid in extracting meaningful insights from medical texts, improving information retrieval, and supporting decision-making processes in the healthcare domain.
 
-Feel free to explore the data, experiment with different features, and enhance the NER system's performance.
+Feel free to explore the data, experiment with different features, and enhance the NER system's performance. For any questions mail to sreenu.winz@gmail.com
 
 Thank you for following along with this project, and happy coding!
